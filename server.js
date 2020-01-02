@@ -1,17 +1,14 @@
 //Dependencies
+var db = require('./config/db')
 var express = require('express')
-var mongoose = require('mongoose')
 var bodyParser = require('body-parser')
 
-//MongoDB connection
-mongoose.connect('mongodb://localhost/db_buyyo')
-
-//Initialitation express
+// Initialitation  body-parser
 var app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-//Routes
+// Routes
 app.use('/api', require('./routes/api'))
 
 //Running server
