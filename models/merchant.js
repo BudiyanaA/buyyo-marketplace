@@ -4,16 +4,24 @@ var mongoose = restful.mongoose
 
 // Schema
 var merchantSchema = new mongoose.Schema({
-    email: String,
-    username: String,
-    password: String,
+    email: {
+        type: String,
+        unique: true,
+        required: true
+    },
+    username: {
+        type: String,
+        required: true
+    },
     name: String,
     category: String,
     desc: String,
     join: {
         type: Date,
         default: Date.now()
-    }
+    },
+    hash: String,
+    salt: String
 })
 
 //Return

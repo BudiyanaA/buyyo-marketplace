@@ -4,9 +4,18 @@ var mongoose = restful.mongoose
 
 //Schema
 var adminSchema = new mongoose.Schema({
-    username: String,
-    password: String,
-    name: String
+    email: {
+        type: String,
+        unique: true,
+        required: true
+    },
+    username: {
+        type: String,
+        required: true
+    },
+    name: String,
+    hash: String,
+    salt: String
 })
 
 //Return
