@@ -3,7 +3,7 @@ var restful = require('node-restful')
 var mongoose = restful.mongoose
 
 // Schema
-var userSchema = new mongoose.Schema({
+var customerSchema = new mongoose.Schema({
     email: {
         type: String,
         unique: true,
@@ -18,4 +18,4 @@ var userSchema = new mongoose.Schema({
 })
 
 //Return
-module.exports = restful.model('User', userSchema)
+module.exports = restful.model('Customer', customerSchema)
