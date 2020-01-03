@@ -6,6 +6,8 @@ var bodyParser = require('body-parser')
 //add
 var passport = require('passport')
 require('./models/merchant')
+require('./models/customer')
+require('./models/admin')
 require('./config/passport')
 
 // Initialitation  body-parser

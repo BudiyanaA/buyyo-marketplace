@@ -42,7 +42,7 @@ customerSchema.methods.generateJWT = function(){
         exp: parseInt(expiry.getTime()/1000),
     }, "CRETHASIA")
 }
-
+mongoose.model('Customer', customerSchema)
 
 //Return
 module.exports = restful.model('Customer', customerSchema)
