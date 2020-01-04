@@ -49,6 +49,7 @@ merchantSchema.methods.generateJWT = function(){
         exp: parseInt(expiry.getTime()/1000),
     }, "SECHASIA")
 }
+mongoose.model('Merchant', merchantSchema)
 
 // Return
 module.exports = restful.model('Merchant', merchantSchema)
