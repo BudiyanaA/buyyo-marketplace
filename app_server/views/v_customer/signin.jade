@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h1= title
+    br
+
+    form(action="/customer/signin_process", method="get", role="form")  
+        p Username:
+        input(type="text", name="username")
+        p Password:
+        input(type="password", name="password")
+        p
+        button(type="submit") submit

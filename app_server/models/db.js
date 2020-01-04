@@ -34,3 +34,4 @@ process.on('SIGINT', function(){
 })
 
 require('./m_merchant')
+require('./m_customer')
