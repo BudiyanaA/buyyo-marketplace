@@ -43,6 +43,7 @@ adminSchema.methods.generateJWT = function(){
         exp: parseInt(expiry.getTime()/1000),
     }, "RAHACRET")   
 }
+mongoose.model('Admin', adminSchema)
 
 //Return
 module.exports = restful.model('Admin', adminSchema)
