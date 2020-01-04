@@ -34,7 +34,8 @@ app.use('/api', require('./routes/api'))
 app.use('/login', function(req, res){
     res.render('signin')
 })
-
+var authentication = require('./controllers/authentication')
+app.post('/login', authentication.login)
 
 //Running server
 const port = 3000
