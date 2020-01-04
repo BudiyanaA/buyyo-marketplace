@@ -6,6 +6,8 @@ var router = express.Router()
 var Product = require('../models/product')
 var Merchant = require('../models/merchant')
 var Record = require('../models/record')
+var Admin = require('../models/admin')
+var Customer = require('../models/customer')
 
 //add
 var jwt = require('express-jwt')
@@ -26,6 +28,12 @@ Merchant.register(router, '/merchant')
 
 Record.methods(['get', 'put', 'post', 'delete'])
 Record.register(router, '/record')
+
+Admin.methods(['get', 'put', 'post', 'delete'])
+Admin.register(router,'/admin')
+
+Customer.methods(['get', 'put', 'post', 'delete'])
+Customer.register(router,'/customer')
 
 // Return
 module.exports = router
