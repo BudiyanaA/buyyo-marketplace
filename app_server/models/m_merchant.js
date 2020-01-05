@@ -28,6 +28,9 @@ var merchantSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
+    products: [productSchema],
     hash: String,
     salt: String
 })
+
+mongoose.model('Merchant', merchantSchema)
