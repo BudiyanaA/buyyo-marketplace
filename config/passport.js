@@ -2,12 +2,13 @@ var passport = require('passport')
 var LocalStrategy = require('passport-local').Strategy
 var mongoose = require('mongoose')
 var Merchant = mongoose.model('Merchant')
+
 var Customer = mongoose.model('Customer')
 var Admin = mongoose.model('Admin')
 
 passport.use(new LocalStrategy({
     usernameField: 'username'
-},
+    },
 function(username, password, done){
     Merchant.findOne({ username: username }, function (err, merchant){
         if(err) { return done(err) }

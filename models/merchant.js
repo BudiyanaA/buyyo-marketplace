@@ -1,6 +1,7 @@
 // Dependencies
-var restful = require('node-restful')
-var mongoose = restful.mongoose
+// var restful = require('node-restful')
+// var mongoose = restful.mongoose
+var mongoose = require('mongoose')
 var crypto = require('crypto')
 var jwt = require('jsonwebtoken')
 
@@ -47,9 +48,10 @@ merchantSchema.methods.generateJWT = function(){
         email: this.email,
         name: this.name,
         exp: parseInt(expiry.getTime()/1000),
-    }, "SECHASIA")
+    }, "MY_SECRET")
 }
+
 mongoose.model('Merchant', merchantSchema)
 
 // Return
-module.exports = restful.model('Merchant', merchantSchema)
+// module.exports = restful.model('Merchant', merchantSchema)
