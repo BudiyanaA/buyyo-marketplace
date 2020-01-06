@@ -33,5 +33,4 @@ var merchantSchema = new mongoose.Schema({
     salt: String
 })
 
-mongoose.model('Product', productSchema, 'products')
 mongoose.model('Merchant', merchantSchema, 'merchants')

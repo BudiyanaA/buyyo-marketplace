@@ -13,8 +13,6 @@ var merchantRouter = require('./app_server/routes/merchant')
 var routesApi = require('./app_api/routes/index')
 var customerRouter = require('./app_server/routes/customer')
 
-require('./app_server/models/db')
-
 var app = express();
 
 // view engine setup
