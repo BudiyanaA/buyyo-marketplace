@@ -11,6 +11,9 @@ var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
 var merchantRouter = require('./app_server/routes/merchant')
 var routesApi = require('./app_api/routes/index')
+var customerRouter = require('./app_server/routes/customer')
+
+require('./app_server/models/db')
 
 var app = express();
 
@@ -27,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/merchant', merchantRouter)
+app.use('/customer',customerRouter)
 
 app.use('/api', routesApi)
 
