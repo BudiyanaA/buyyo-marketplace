@@ -1,4 +1,9 @@
 block content
-h1 List of Merchants
+    #banner.page-header
+        h1= pageHeader.title
+        small &nbsp;#{pageHeader.strapline}
+
 each merchant in merchants
-    p= merchant.name
+    h4
+    a(href="/merchant/#{merchant._id}")= merchant.name
+    p= "(" + merchant.category + ")"

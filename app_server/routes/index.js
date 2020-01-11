@@ -9,5 +9,7 @@ router.get('/', ctrlMain.index);
 
 /* MERCHANTS */
 router.get('/merchant', ctrlMerchant.homelist)
+router.get('/merchant/:merchantId', ctrlMerchant.merchantInfo)
+// router.get('/merchant/product/new', ctrlMerchant.addProduct)
 
 module.exports = router;

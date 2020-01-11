@@ -1,0 +1,16 @@
+block content
+    #banner.page-header
+        h1= pageHeader.title
+
+h4 Name : 
+p= merchant.name
+br
+h4 Category : 
+p= merchant.category
+br
+h4 Description : 
+p= merchant.desc
+br
+h4 Products : 
+each product in merchant.products
+    p= product.name + " : " + product.price
