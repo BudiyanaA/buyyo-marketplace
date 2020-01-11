@@ -16,4 +16,6 @@ router.get('/merchants/:merchantId/products/:productId', ctrlProduct.productRead
 router.put('/merchants/:merchantId/products/:productId', ctrlProduct.productUpdateOne)
 router.delete('/merchants/:merchantId/products/:productId', ctrlProduct.productDeleteOne)
 
+router.post('/merchants/login/', ctrlMerchant.merchantLogin)
+
 module.exports = router
