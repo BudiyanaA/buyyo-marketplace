@@ -1,0 +1,14 @@
+h4= title
+
+form(action="/merchant/#{merchant._id}/product/new", method="post", role="form")
+    p Name : 
+    input#name(type="text", name="name")
+    br
+    p Price :
+    input#price(type="number", name="price")
+    br
+    p Stock :
+    input#stock(type="number", name="stock")
+    br
+    br
+    button(type="submit") Submit

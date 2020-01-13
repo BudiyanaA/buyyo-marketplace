@@ -4,6 +4,22 @@ var apiOptions = {
     server: "http://localhost:3000"
 }
 
+var _showError = function(req, res, status){
+    var title, content
+    if (status === 404){
+        title = "404, page not found"
+        content = "Oh dear. Looks like we can't find this page. Sorry."
+    } else{
+        title = status + ", something's gone wrong"
+        content = "Something, somewhere, has gone just a little bit wrong."
+    }
+    res.status(status)
+    res.render('v_merchant/error', {
+        title: title,
+        content: content
+    })
+}
+
 var renderHomepage = function(req, res, responseBody){
     var message
     if(!(responseBody instanceof Array)){
@@ -54,7 +70,15 @@ var renderDetailMerchant = function(req, res, merchDetail){
     })
 }
 
-module.exports.merchantInfo = function(req, res){
+var renderProductForm = function(req, res, merchDetail){
+    res.render('v_merchant/product', {
+        title: 'Add New Product ' + merchDetail.name,
+        pageHeader: { title: 'Add Product ' + merchDetail.name},
+        merchant: merchDetail
+    })
+}
+
+var getMerchantInfo = function(req, res, callback){
     var requestOptions, path
     path = '/api/merchants/' + req.params.merchantId
     requestOptions = {
@@ -65,11 +89,49 @@ module.exports.merchantInfo = function(req, res){
     request(
         requestOptions,
         function(err, response, body){
-            renderDetailMerchant(req, res, body)
+            var data = body
+            callback(req, res, data)
         }
     )
 }
 
+module.exports.merchantInfo = function(req, res){
+    getMerchantInfo(req, res, function(req, res, responseData){
+        renderDetailMerchant(req, res, responseData)
+    })
+}
+
+module.exports.addProduct = function(req, res){
+    getMerchantInfo(req, res, function(req, res, responseData){
+        renderProductForm(req, res, responseData)
+    })
+}
+
+module.exports.doAddProduct = function(req, res){
+    var requestOptions, path, merchantId, postData
+    merchantId = req.params.merchantId
+    path = '/api/merchants/' + merchantId + '/products'
+    postData = {
+        name: req.body.name,
+        price: parseInt(req.body.price),
+        stock: parseInt(req.body.stock)
+    }
+    requestOptions = {
+        url: apiOptions.server + path,
+        method: "POST",
+        json: postData
+    }
+    request(
+        requestOptions,
+        function(err, response, body){
+            if (response.statusCode === 201){
+                res.redirect('/merchant/' + merchantId)
+            } else{
+                _showError(req, res, response.statusCode)
+            }
+        }
+    )
+}
 
 /* GET home page. */
 // Merchant Router

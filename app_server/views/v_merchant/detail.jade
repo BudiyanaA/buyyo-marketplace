@@ -1,9 +1,21 @@
+mixin formatDate (dateString)
+    -var date = new Date(dateString);
+    -var monthNames =  [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+    -var d = date.getDate();
+    -var m = monthNames[date.getMonth()];
+    -var y = date.getFullYear();
+    -var output = d + ' ' + m + ' ' + y;
+    p= output
+
 block content
     #banner.page-header
         h1= pageHeader.title
 
 h4 Name : 
 p= merchant.name
+br
+h4 Join : 
++formatDate(merchant.join)
 br
 h4 Category : 
 p= merchant.category
@@ -13,4 +25,4 @@ p= merchant.desc
 br
 h4 Products : 
 each product in merchant.products
-    p= product.name + " : " + product.price
+    p= product.name + " : " + product.price + " ( " + product.stock + " pcs )"
