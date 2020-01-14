@@ -6,25 +6,6 @@ var sendJsonResponse = function(res, status, content){
     res.json(content)
 }
 
-//Dummy Login
-module.exports.merchantLogin = function(req, res){
-    Merchant
-        .findOne({ 
-            username: req.body.username,
-            username: req.body.password
-        })
-        .exec(function(err, data){
-            if (data === null){
-                sendJsonResponse(res, 404, {
-                    "message": "username dan password salah"
-                })
-                return
-            } 
-            sendJsonResponse(res, 200, {
-                "message": "login berhasil"
-            })
-        })
-}
 
 module.exports.merchantList = function(req, res){
     Merchant
